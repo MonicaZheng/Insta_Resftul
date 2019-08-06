@@ -1,0 +1,21 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pylint = "*"
+
+[packages]
+django = "*"
+pillow = "*"
+django-imagekit = "*"
+pylint-django = "*"
+django-annoying = "*"
+boto3 = "*"
+django-storages = "*"
+python-decouple = "*"
+djangorestframework = "*"
+
+[requires]
+python_version = "3.7"

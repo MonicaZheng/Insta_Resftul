@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% load static custom_tags %}
+
+{% block content %}
+<div class="follow__wrapper row">
+  <div class="follow__heading">
+    {{ header }}
+  </div>
+  {% for object in object_list %}
+    <div class="follow__card" id="{{ object.pk }}">
+      {% if object.profile_pic %}
+        <img class="picture-circle--small" src="{{ object.profile_pic.url }}">
+      {% else %}
+        <img class="picture-circle--small" src="{% static 'images/profile_placeholder.jpg' %}">
+      {% endif %}
+      <a href="{% url 'profile' object.pk %}">{{ object.username }}</a>
+
+      {% if request.user.is_authenticated and object != request.user %}
+        <div class="follow-toggle__container">
+          {% is_following request.user object as following %}
+          <button class="btn btn-primary {% if not following %}follow-user{% else %}unfollow-user{% endif %}">
+            {% if not following %}
+              Follow
+            {% else %}
+              Following
+            {% endif %}
+          </button>
+        </div>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static custom_tags %}
+
+{% block content %}
+
+<div class="row profile-settings">
+  <div class="col-xs-12">
+    <div class="profile-pic-name">
+      {% if user.profile_pic %}
+        <img class="picture-circle--medium" src="{{user.profile_pic.url}}">
+      {% else %}
+        <img class="picture-circle--medium" src="{% static 'images/profile_placeholder.jpg' %}">
+      {% endif %}
+      <span class="username">{{ user.username }}</span>
+    </div>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Update" />
+    </form>
+  </div>
+</div>
+
+{% endblock %}

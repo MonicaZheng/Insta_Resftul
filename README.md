@@ -1,2 +1,5 @@
-# Insta_Resftul
-This is the Restful Web Service for Insta apps
+# TODO list
+- Eidt Profile
+- Show followers
+- Show followings
+# JZInsta_Backend
